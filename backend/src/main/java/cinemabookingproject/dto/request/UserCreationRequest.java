@@ -1,7 +1,5 @@
 package com.example.cinemabookingproject.dto.request;
 
-
-
 import java.time.LocalDate;
 import java.util.List;
 public class UserCreationRequest {
