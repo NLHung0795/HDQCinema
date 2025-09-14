@@ -21,4 +21,7 @@ public class User {
 
     @ManyToMany
     Set<Role> roles;
+
+    @OneToMany(mappedBy = "user" ,orphanRemoval = true, cascade = CascadeType.ALL)
+    Set<Booking> bookings;
 }
