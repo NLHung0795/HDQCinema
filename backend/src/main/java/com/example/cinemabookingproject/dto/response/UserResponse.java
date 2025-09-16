@@ -1,6 +1,5 @@
 package com.example.cinemabookingproject.dto.response;
 
-import com.example.cinemabookingproject.entity.Role;
 import jakarta.persistence.ManyToMany;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
