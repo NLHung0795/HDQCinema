@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -17,7 +19,11 @@ public class Cinema {
     @Column(name = "cinema_id")
     String id;
 
+    String name;
     String city;
     String district;
     String address;
+
+    @OneToMany(mappedBy = "cinema", cascade = CascadeType.ALL, orphanRemoval = true)
+    Set<Room> rooms;
 }

@@ -1,9 +1,12 @@
 package com.example.cinemabookingproject.dto.response;
 
+import com.example.cinemabookingproject.entity.ShowTime;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -12,5 +15,6 @@ import java.time.LocalDateTime;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder
 public class ShowTimeResponse {
-    private LocalDateTime startTime;
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") // format ISO 8601
+    List<ShowTime> startTime;
 }

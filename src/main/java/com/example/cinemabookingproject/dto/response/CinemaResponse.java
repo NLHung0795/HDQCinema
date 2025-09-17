@@ -1,6 +1,6 @@
 package com.example.cinemabookingproject.dto.response;
 
-import com.example.cinemabookingproject.entity.ShowTime;
+import com.example.cinemabookingproject.entity.Room;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -11,11 +11,10 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Builder
-public class MovieResponse {
-    String id;
-    String name, poster;
-    Integer duration;
-    Integer limitAge;
-    Set<ShowTime> showtimes;
+public class CinemaResponse {
+    String name;
+    String city;
+    String district;
+    String address;
+    Set<Room> rooms;
 }

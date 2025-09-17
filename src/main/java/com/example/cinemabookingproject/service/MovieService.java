@@ -6,6 +6,7 @@ import com.example.cinemabookingproject.dto.response.ShowTimeResponse;
 import com.example.cinemabookingproject.entity.Movie;
 import com.example.cinemabookingproject.entity.ShowTime;
 import com.example.cinemabookingproject.mapper.MovieMapper;
+import com.example.cinemabookingproject.mapper.ShowTimeMapper;
 import com.example.cinemabookingproject.repository.MovieRepository;
 import com.example.cinemabookingproject.repository.ShowTimeRepository;
 import lombok.AccessLevel;
@@ -30,14 +31,12 @@ public class MovieService {
     public MovieResponse create(MovieCreationRequest request){
         Movie movie = movieMapper.toMovie(request);
 
-        List<ShowTimeResponse> showTimes = new ArrayList<>();
-        for(var showTime : request.getShowTimes()){
-            showTimes.add(new ShowTimeResponse(showTime));
-        }
-        var t = new HashSet<>(showTimes);
-        movie.setShowtimes(t);
-        movieRepository.save(movie);
+        var showTimes = showTimeRepository.findByStartTimeIn(request.getShowTimes());
+        movie.setShowtimes(new HashSet<>(showTimes));
+        movie = movieRepository.save(movie); // sau lệnh này thì id mới đc tạo
 
         return movieMapper.toMovieResponse(movie);
     }
+
+
 }

@@ -18,11 +18,15 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "room_id")
     String id;
-    int number;
+    String roomName;
 
     @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, orphanRemoval = true)
     Set<ShowTime> showTimes;
 
     @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, orphanRemoval = true)
     Set<Seat> seats;
+
+    @ManyToOne
+    @JoinColumn(name = "cinema_id", nullable = false)
+    Cinema cinema;
 }

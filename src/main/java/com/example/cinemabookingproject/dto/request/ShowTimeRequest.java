@@ -1,8 +1,6 @@
 package com.example.cinemabookingproject.dto.request;
 
-import com.example.cinemabookingproject.entity.ShowTime;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -13,12 +11,9 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class MovieCreationRequest {
-    String name, poster;
-    Integer duration;
-    Integer limitAge;
-
+public class ShowTimeRequest {
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") // format ISO 8601
-    List<LocalDateTime> showTimes;
+    List<LocalDateTime> startTime;
 }

@@ -3,6 +3,7 @@ package com.example.cinemabookingproject.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import javax.management.ConstructorParameters;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -19,7 +20,6 @@ public class ShowTime {
     String id;
 
     private LocalDateTime startTime; // ngày + giờ chiếu
-    private LocalDateTime endTime;
 
 
     // Nhiều suất chiếu thuộc về 1 phim
@@ -33,4 +33,8 @@ public class ShowTime {
 
     @OneToMany(mappedBy = "showTime", cascade = CascadeType.ALL, orphanRemoval = true)
     Set<Booking> booking;
+
+    public ShowTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
 }
